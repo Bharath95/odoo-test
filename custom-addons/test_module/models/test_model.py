@@ -28,14 +28,6 @@ class TestModel(models.Model):
                 print(f"Found key with value: {value}")  # noqa: T201
             case _:
                 print("No match found")  # noqa: T201
-        
-        # Intentionally adding a syntax error
-        if True:
-            print("This is a syntax error")
-            print("Another line")
-            print("One more line")
-            print("Final line")
-            print("This line has no newline at the end")
 
     def another_method(self, param1: str, param2: int) -> bool:
         """Another Method
@@ -49,10 +41,4 @@ class TestModel(models.Model):
 
         Returns:
             bool: Result of the operation
-
         """
-        match (param1, param2):
-            case ("test", 123):
-                return True
-            case _:
-                return False
