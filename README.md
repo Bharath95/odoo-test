@@ -57,6 +57,27 @@ odoo-test/
    - `models/` - Python models
    - `views/` - XML views
 
+## Code Quality
+
+This repository uses Ruff for code quality checks and formatting. To run Ruff locally:
+
+1. Install Ruff:
+   ```bash
+   pip install ruff
+   ```
+
+2. Run the checks:
+   ```bash
+   ruff check .
+   ```
+
+3. Format your code:
+   ```bash
+   ruff format .
+   ```
+
+The configuration is already set up in `pyproject.toml`, so no additional setup is needed. Ruff will help maintain consistent code style and catch potential issues before pushing to the repository.
+
 ## Troubleshooting
 
 1. If the containers don't start:
