@@ -5,4 +5,7 @@
     'data': [],
     'installable': True,
     'application': False,
+    'license': 'LGPL-3',
+    'author': 'Your Name',
+    'description': 'Test module with Python 3.12 features',
 }

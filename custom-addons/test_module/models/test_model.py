@@ -6,14 +6,21 @@ class TestModel(models.Model):
     name = fields.Char('Name')
     
     def test_method(self):
-        # Missing docstring
-        return True
+        """Test method with Python 3.12 features."""
+        match = {
+            'key': 'value',
+            'another': 'data'
+        }
+        match match:
+            case {'key': value}:
+                print(f"Found key with value: {value}")
+            case _:
+                print("No match found")
     
-    def another_method(self, param1, param2, param3, param4, param5):
-        # Too many arguments
-        return True
-    
-    def yet_another_method(self):
-        # Long line
-        this_is_a_very_long_variable_name = "This is a very long string that will definitely exceed the 120 character limit and trigger a linting error"
-        return True
+    def another_method(self, param1: str, param2: int) -> bool:
+        """Method with type hints and pattern matching."""
+        match (param1, param2):
+            case ('test', 123):
+                return True
+            case _:
+                return False
