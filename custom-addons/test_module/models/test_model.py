@@ -21,21 +21,13 @@ class TestModel(models.Model):
     def test_method(self) -> None:
         """Test method documentation."""
         match = {
-            "key": "value"
+            "key": "value",
         }
         match match:
             case {"key": value}:
                 print(f"Found key with value: {value}")  # noqa: T201
             case _:
                 print("No match found")  # noqa: T201
-
-        # Intentional syntax error
-        if True:
-            print("This is a syntax error")
-            print("Another line")
-            print("One more line")
-            print("Final line")
-            print("This line has no newline at the end")
 
     def another_method(self, param1: str, param2: int) -> bool:
         """Another Method
