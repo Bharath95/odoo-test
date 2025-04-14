@@ -76,6 +76,8 @@ This repository uses Ruff for code quality checks and formatting. To run Ruff lo
    ruff format .
    ```
 
+The repository is configured with a pre-commit hook that will automatically run Ruff checks before any commit. If Ruff finds any errors, the commit will be blocked until the errors are fixed.
+
 The configuration is already set up in `pyproject.toml`, so no additional setup is needed. Ruff will help maintain consistent code style and catch potential issues before pushing to the repository.
 
 ## Troubleshooting

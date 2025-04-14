@@ -23,17 +23,25 @@ jobs:
       - name: Run Ruff
         run: ruff check .
         env:
-          # Configure Ruff to fail the build if any issues are found
           RUFF_FAIL_ON_ERROR: true
 
       - name: Run Ruff with fixes
         run: ruff check . --fix
         env:
-          # Configure Ruff to fail the build if any issues are found
           RUFF_FAIL_ON_ERROR: true
 
-      - name: Run Ruff with fixes (unsafe)
+      - name: Run Ruff with unsafe fixes
         run: ruff check . --fix --unsafe-fixes
         env:
-          # Configure Ruff to fail the build if any issues are found
+          RUFF_FAIL_ON_ERROR: true
+
+      - name: Check for remaining errors
+        run: |
+          echo "Checking for remaining Ruff errors..."
+          ruff check .
+          if [ $? -ne 0 ]; then
+            echo " Ruff found errors after fixes. Please fix them before merging."
+            exit 1
+          fi
+        env:
           RUFF_FAIL_ON_ERROR: true
