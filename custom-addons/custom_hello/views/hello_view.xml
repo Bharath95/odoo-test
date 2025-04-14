@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Action -->
+        <record id="action_hello" model="ir.actions.act_window">
+            <field name="name">Hello World</field>
+            <field name="res_model">custom.hello</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu -->
+        <menuitem id="menu_hello_root" name="Hello World" sequence="10"/>
+        <menuitem id="menu_hello" parent="menu_hello_root" name="Hello" action="action_hello" sequence="10"/>
+    </data>
+</odoo>

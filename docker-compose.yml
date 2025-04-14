@@ -1,0 +1,44 @@
+version: "3.7"
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: odoo
+      POSTGRES_USER: odoo_user
+      POSTGRES_PASSWORD: odoo_password
+    networks:
+      - odoo_network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  odoo:
+    image: odoo:18
+    environment:
+      HOST: postgres
+      USER: odoo_user
+      PASSWORD: odoo_password
+      DB_NAME: odoo
+      ADDONS_PATH: /mnt/extra-addons
+    depends_on:
+      - postgres
+    networks:
+      - odoo_network
+    volumes:
+      - odoo_data:/var/lib/odoo
+      - ./custom-addons:/mnt/extra-addons
+    ports:
+      - "8069:8069"
+    entrypoint: [ "odoo", "--dev", "all,reload,qweb,werkzeug,xml", "-d", "odoo", "--db_host", "postgres", "--db_user", "odoo_user", "--db_password", "odoo_password", "-i", "base" ]
+    # Add "-i base" to initialize the database
+
+volumes:
+  postgres_data:
+  odoo_data:
+
+
+networks:
+  odoo_network:
+    external: true
