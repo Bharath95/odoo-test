@@ -18,10 +18,10 @@ class TestModel(models.Model):
 
     name = fields.Char("Name")
 
-    def test_method(self, param: str) -> None:
+    def test_method(self) -> None:
         """Test method documentation."""
         match = {
-            "key": "value"
+            "key": "value",
         }
         match match:
             case {"key": value}:
@@ -41,4 +41,5 @@ class TestModel(models.Model):
 
         Returns:
             bool: Result of the operation
+
         """
