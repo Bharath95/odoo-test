@@ -18,21 +18,24 @@ class TestModel(models.Model):
 
     name = fields.Char("Name")
 
-    def test_method(self):
-        """Test Method
-        ==========
-
-        This method demonstrates Python 3.12 pattern matching and type hints.
-        """
+    def test_method(self, param: str) -> None:
+        """Test method documentation."""
         match = {
-            "key": "value",
-            "another": "data",
+            "key": "value"
         }
         match match:
             case {"key": value}:
                 print(f"Found key with value: {value}")  # noqa: T201
             case _:
                 print("No match found")  # noqa: T201
+        
+        # Intentionally adding a syntax error
+        if True:
+            print("This is a syntax error")
+            print("Another line")
+            print("One more line")
+            print("Final line")
+            print("This line has no newline at the end")
 
     def another_method(self, param1: str, param2: int) -> bool:
         """Another Method
